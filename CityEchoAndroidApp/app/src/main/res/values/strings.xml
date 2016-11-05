@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CityEcho</string>
+    <string name="add_issue_button">Add an Issue</string>
 </resources>

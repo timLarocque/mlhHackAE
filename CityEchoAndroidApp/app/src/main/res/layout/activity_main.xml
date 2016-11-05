@@ -10,8 +10,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.uml.android.cityecho.MainActivity">
 
-    <TextView
+    <ListView
+        android:id="@+id/issueList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/addIssueButton"
+        android:text="@string/add_issue_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
 </RelativeLayout>
