@@ -21,7 +21,7 @@ class Main():
 
         #return (street, issue, status)
 
-        conn = sqlite3.connect('test.sqlite3')
+        conn = sqlite3.connect('../admin-ui/cityecho/db.sqlite3')
         i = 0
         line = conn.cursor.fetchall()
         while i < already:
