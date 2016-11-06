@@ -1,19 +1,15 @@
 package edu.uml.android.cityecho;
 
+import android.database.CursorJoiner;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -56,6 +52,11 @@ public class SubmitHttpPost extends AsyncTask<JSONObject, Void, String> {
             } catch (IOException e) {}
         } catch (JSONException e) {}
         return jsonResponse;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+
     }
 
 }

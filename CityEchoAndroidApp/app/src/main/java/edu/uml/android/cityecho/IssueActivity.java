@@ -1,5 +1,6 @@
 package edu.uml.android.cityecho;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -69,6 +70,9 @@ public class IssueActivity extends AppCompatActivity {
                         json.put("type", type);
                         json.put("email", email);
                         new SubmitHttpPost().execute(json);
+                        Toast.makeText(IssueActivity.this, "Thanks for submitting!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(IssueActivity.this, MainActivity.class);
+                        startActivity(intent);
                     } catch(JSONException j) {
                         Toast.makeText(IssueActivity.this, "Somthing ain't right.", Toast.LENGTH_SHORT).show();
                     }
