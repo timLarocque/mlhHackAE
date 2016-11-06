@@ -106,7 +106,7 @@ public final class QueryUtils {
                 String streetName = currentArticle.getString("street_name");
                 String city = currentArticle.getString("city");
                 String state = currentArticle.getString("state");
-                String type = currentArticle.getString("type");
+                String type = currentArticle.getString("issueType");
                 Bitmap map = null;
                 try {
                     String mapUrl = streetNum + "+" + streetName + "+" + city + "," + state;

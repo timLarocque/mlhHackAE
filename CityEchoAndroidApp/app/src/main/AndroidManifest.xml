@@ -16,8 +16,8 @@
 
         </activity>
 
-        <activity android:name=".IssueActivity">
-
+        <activity android:name=".IssueActivity"
+            android:parentActivityName="edu.uml.android.cityecho.MainActivity" >
         </activity>
 
         <activity
