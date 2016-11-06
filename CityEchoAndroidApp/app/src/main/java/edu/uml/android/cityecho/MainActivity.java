@@ -1,6 +1,7 @@
 package edu.uml.android.cityecho;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.app.LoaderManager;
@@ -8,6 +9,7 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final int ARTICLE_LOADER_ID = 1;
     private static final String BASE_REQUEST_URL =
-            "http://159.203.136.164:8080/echopy/gcp";
+            "http://159.203.136.164/echopy/gcp";
     private IssueAdapter mAdapter;
     private TextView mEmptyStateTextView;
 
@@ -35,6 +37,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mAdapter = new IssueAdapter(this, new ArrayList<Issue>());
 
         articleListView.setAdapter(mAdapter);
+
+        // Set up the onclick listener for add button
+        Button addIssue = (Button) findViewById(R.id.addIssueButton);
+        addIssue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, IssueActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Get networking info to determine if we have a connection or not
         ConnectivityManager connMgr = (ConnectivityManager)

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/adam/Desktop/mlhHackAE/CityEchoAndroidApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="1974c4b1660c3395a744de38eece86384594788d">
+        <dex dex="/Users/adam/Desktop/mlhHackAE/CityEchoAndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_854efa23053ee1dcf84937e9c34784259c7dad54/classes.dex" />
+    </item>
+
+</items>

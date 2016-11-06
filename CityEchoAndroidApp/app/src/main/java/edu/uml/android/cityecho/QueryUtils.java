@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -116,7 +115,7 @@ public final class QueryUtils {
                     uriBuilder.appendQueryParameter("key", API_KEY);
                     uriBuilder.appendQueryParameter("center", mapUrl);
                     uriBuilder.appendQueryParameter("size","640x400");
-                    uriBuilder.appendQueryParameter("scale","4");
+                    uriBuilder.appendQueryParameter("zoom","18");
                     uriBuilder.appendQueryParameter("markers", "color:blue|label:I|" + mapUrl);
                     String request_url = uriBuilder.toString();
                     URL imageURL = new URL(request_url);
