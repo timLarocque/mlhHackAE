@@ -28,7 +28,14 @@ html, body {
   border-radius:2px;
   box-shadow:1px 1px #000000;
   color:#333333;
+  padding:10px;
 }
 .issue h4 {
   color:#335599;
+}
+.h20 {
+  height:20px;
+}
+.float-right {
+  float:right;
 }
