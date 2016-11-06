@@ -1,0 +1,21 @@
+pothole
+Central St
+0
+
+pothole
+Middle St
+0
+
+fallen telephone pole
+High St
+0
+
+pothole
+Central St
+0
+
+road debris
+Right St
+0
+
+None
