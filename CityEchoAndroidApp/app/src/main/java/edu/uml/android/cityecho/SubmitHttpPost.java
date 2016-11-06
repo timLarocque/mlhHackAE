@@ -23,41 +23,39 @@ import java.net.URL;
 
 public class SubmitHttpPost extends AsyncTask<JSONObject, Void, String> {
 
-    private static final String POST_URL = "http://159.203.136.164/echopy/mr";
+    private static final String GET_URL = "http://159.203.136.164/echopy/mr";
 
     @Override
     protected String doInBackground(JSONObject... params) {
         JSONObject json = params[0];
+        String jsonResponse = null;
+        Uri baseUri = Uri.parse(GET_URL);
         try {
-            URL url = new URL(POST_URL);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(15000);
-            urlConnection.setConnectTimeout(15000);
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
-
+            Uri.Builder uriBuilder = baseUri.buildUpon();
+            uriBuilder.appendQueryParameter("street_num", json.getString("street_num"))
+                    .appendQueryParameter("street_name", json.getString("street_name"))
+                    .appendQueryParameter("city", json.getString("city"))
+                    .appendQueryParameter("state", json.getString("state"))
+                    .appendQueryParameter("type", json.getString("type"))
+                    .appendQueryParameter("email", json.getString("email"));
             try {
-                Uri.Builder builder = new Uri.Builder()
-                        .appendQueryParameter("street_num", json.getString("street_num"))
-                        .appendQueryParameter("street_name", json.getString("street_name"))
-                        .appendQueryParameter("city", json.getString("city"))
-                        .appendQueryParameter("state", json.getString("state"))
-                        .appendQueryParameter("type", json.getString("type"))
-                        .appendQueryParameter("email", json.getString("email"));
-                String query = builder.build().getEncodedQuery();
-                OutputStream os = urlConnection.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-                writer.write(query);
-                writer.flush();
-                writer.close();
-                os.close();
+                URL url = new URL(uriBuilder.toString());
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(urlConnection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
 
-                urlConnection.connect();
-            } catch (JSONException e) {}
-        } catch (IOException e) {}
-        return "ok";
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                jsonResponse = response.toString();
+            } catch (IOException e) {}
+        } catch (JSONException e) {}
+        return jsonResponse;
     }
 
 }

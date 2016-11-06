@@ -17,11 +17,13 @@
     <Button
         android:id="@+id/addIssueButton"
         android:text="@string/add_issue_button"
+        android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="@dimen/activity_horizontal_margin"/>
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/empty_view"
