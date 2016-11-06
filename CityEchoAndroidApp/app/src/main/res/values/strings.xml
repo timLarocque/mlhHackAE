@@ -1,4 +1,20 @@
 <resources>
-    <string name="app_name">CityEcho</string>
+    <string name="app_name">City Echo</string>
     <string name="add_issue_button">Add an Issue</string>
+    <string name="issue_type">Type of Issue:</string>
+
+    <string-array name="issue_spinner">
+        <item>Pothole</item>
+        <item>Snow or Ice</item>
+        <item>Non-Functional Traffic Light</item>
+        <item>Backed Up Storm Drain</item>
+        <item>Debris Obstructing road</item>
+        <item>Telephone Pole Downed</item>
+    </string-array>
+
+    <string name="location">Location of Issue</string>
+    <string name="address">Address Nearest Issue</string>
+    <string name="city_text">City / Town</string>
+    <string name="state_text">State</string>
+
 </resources>
