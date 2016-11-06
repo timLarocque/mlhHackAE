@@ -103,7 +103,7 @@ public final class QueryUtils {
                 // Get a single earthquake at position i within the list of earthquakes
                 JSONObject currentArticle = issueArray.getJSONObject(i);
 
-                int streetNum = currentArticle.getInt("street_number");
+                int streetNum = currentArticle.getInt("street_num");
                 String streetName = currentArticle.getString("street_name");
                 String city = currentArticle.getString("city");
                 String state = currentArticle.getString("state");
@@ -115,7 +115,9 @@ public final class QueryUtils {
                     Uri.Builder uriBuilder = baseUri.buildUpon();
                     uriBuilder.appendQueryParameter("key", API_KEY);
                     uriBuilder.appendQueryParameter("center", mapUrl);
-                    uriBuilder.appendQueryParameter("size","600x400");
+                    uriBuilder.appendQueryParameter("size","640x400");
+                    uriBuilder.appendQueryParameter("scale","4");
+                    uriBuilder.appendQueryParameter("markers", "color:blue|label:I|" + mapUrl);
                     String request_url = uriBuilder.toString();
                     URL imageURL = new URL(request_url);
                     map = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
