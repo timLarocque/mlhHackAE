@@ -8,7 +8,7 @@
         <item>Snow or Ice</item>
         <item>Non-Functional Traffic Light</item>
         <item>Backed Up Storm Drain</item>
-        <item>Debris Obstructing road</item>
+        <item>Debris Obstructing Road</item>
         <item>Telephone Pole Downed</item>
     </string-array>
 
@@ -16,5 +16,7 @@
     <string name="address">Address Nearest Issue</string>
     <string name="city_text">City / Town</string>
     <string name="state_text">State</string>
+    <string name="email_text">Email</string>
+    <string name="email_hint">someone@example.com</string>
 
 </resources>
