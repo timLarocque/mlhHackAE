@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="76038220da5808848b0c05d74e11effad6e172e4">
+        sha1="9e481c63b560ac5eaa60d344a40242f28995560f">
         <dex dex="C:\Users\Tim\Documents\mlhHackAE\CityEchoAndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_714cf14e37e099bd9daf05a300de0b14328b2c90\classes.dex" />
     </item>
     <item
@@ -142,7 +142,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="5381826bdfdd7d8b03569d19ee5441cf91ac4d05">
+        sha1="f3ce513c53626780710fc637ede3bc377a4fe30a">
         <dex dex="C:\Users\Tim\Documents\mlhHackAE\CityEchoAndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_008e39852745b717fe3d63d5eb5140e602af3696\classes.dex" />
     </item>
     <item
