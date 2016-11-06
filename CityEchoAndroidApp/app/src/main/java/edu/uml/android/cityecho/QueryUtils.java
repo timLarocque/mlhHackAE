@@ -1,7 +1,10 @@
 package edu.uml.android.cityecho;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,7 +22,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class QueryUtils {
 
@@ -29,6 +35,11 @@ public final class QueryUtils {
 
     private static final String BASE_GOOGLE_REQUEST_URL =
             "https://maps.googleapis.com/maps/api/staticmap";
+
+    private static final String DISTANCE_API_KEY = "AIzaSyCO0wBfW7jHVgOD1IjX9aEQm-pdm4TynYc";
+
+    private static final String GOOGLE_DISTANCE_API =
+            "https://maps.googleapis.com/maps/api/distancematrix/json";
 
     private QueryUtils() {}
 
@@ -138,5 +149,65 @@ public final class QueryUtils {
 
         // Return the list of earthquakes
         return issues;
+    }
+
+    public static List<Issue> sortByDistance(List<Issue> currentList) {
+        // We need to get the distance
+        List<Issue> newList = currentList;
+        int[] distances = new int[currentList.size()];
+        String jsonResponse = "";
+
+        for (int i = 0; i < currentList.size(); i++) {
+            Uri baseUri = Uri.parse(GOOGLE_DISTANCE_API);
+            Uri.Builder uriBuilder = baseUri.buildUpon();
+            uriBuilder.appendQueryParameter("key", DISTANCE_API_KEY);
+            uriBuilder.appendQueryParameter("origins", "Binhamton" + "," + "NY");
+            uriBuilder.appendQueryParameter("destinations", currentList.get(i).getCity()
+                + "+" + currentList.get(i).getState());
+            String request_url = uriBuilder.toString();
+            try {
+                URL url = new URL(request_url);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(urlConnection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                jsonResponse = response.toString();
+            } catch (IOException e) {}
+            try {
+                // Create a JSONObject from the JSON response string
+                JSONObject baseJsonResponse = new JSONObject(jsonResponse);
+                JSONArray issueArray = baseJsonResponse.getJSONArray("rows");
+                JSONObject response = issueArray.getJSONObject(0);
+                issueArray = response.getJSONArray("elements");
+                response = issueArray.getJSONObject(0);
+                response = response.getJSONObject("distance");
+                distances[i] = response.getInt("value");
+            } catch (JSONException e) {
+                // If an error is thrown when executing any of the above statements in the "try" block,
+                // catch the exception here, so the app doesn't crash. Print a log message
+                // with the message from the exception.
+                Log.e("QueryUtils", "Problem parsing the article JSON results", e);
+            }
+        }
+
+        // Sort list based on distances recently found
+        Map<Issue, Integer> map = new HashMap<Issue, Integer>(100);
+        for (int i = 0; i < distances.length; i++)
+            map.put(currentList.get(i), distances[i]);
+        map = MapUtil.sortByValue(map);
+        newList.clear();
+        for (Issue i : map.keySet()) {
+            newList.add(i);
+        }
+
+        return newList;
     }
 }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Manifest;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Issue>> {
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        // If there is a network connection, fetch data
+        // If there is a network connection, fetcha data
         if (networkInfo != null && networkInfo.isConnected()) {
             LoaderManager loaderManager = getSupportLoaderManager();
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
