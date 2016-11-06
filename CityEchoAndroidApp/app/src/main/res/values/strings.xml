@@ -18,5 +18,6 @@
     <string name="state_text">State</string>
     <string name="email_text">Email</string>
     <string name="email_hint">someone@example.com</string>
+    <string name="submit">Submit Issue</string>
 
 </resources>
