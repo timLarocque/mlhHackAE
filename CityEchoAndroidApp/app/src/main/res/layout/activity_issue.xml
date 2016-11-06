@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/issue_type_spinner_title"
@@ -12,35 +13,36 @@
 
     <Spinner
         android:id="@+id/issue_type_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="32dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@android:color/white">
     </Spinner>
 
     <TextView
         android:id="@+id/location_text"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="@string/location"/>
 
     <EditText
+        android:id="@+id/address"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="16dp"
+        android:layout_height="wrap_content"
         android:hint="@string/address"/>
 
     <LinearLayout
         android:id="@+id/city_state"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/city"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_weight="2"
             android:hint="@string/city_text"/>
 
         <EditText
@@ -52,15 +54,25 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/email_hint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/email_text"/>
 
     <EditText
-        android:id="@+id/email_hint"
+        android:id="@+id/email"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/email_hint"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:text="@string/submit"
+        android:layout_alignParentBottom="true"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/activity_horizontal_margin"/>
+
 </LinearLayout>
