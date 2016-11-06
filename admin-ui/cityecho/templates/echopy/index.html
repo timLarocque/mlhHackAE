@@ -13,15 +13,20 @@
     <h1><span class="first">City</span><img src="{% static 'echopy/res/images/wifi.png' %}" /><span class="second">cho</span></h1>
   </div>
   <div class="container-fluid bg-3">
+  {% for i in issues %}
     <div class="row">
       <div class="col-sm-2">
       </div>
       <div class="col-sm-8 issue">
-        <div class="glyphicon glyphicon-remove-sign float-right">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{i.street_num}}+{{i.street_name}},{{i.city}},{{i.state}}&zoom=12&size=200x200&markers=color:blue|label:i|{{i.street_num}}+{{i.street_name}},{{i.city}},{{i.state}}&key=AIzaSyDBBHh--w4mJcHZGMiwfLMYEdrEsR97wtc"  class="col-sm-3"/>
+        <div class="col-sm-4">
+          <h4><span>{{i.street_num}}</span> <span>{{i.street_name}}</span>, <span>{{i.city}}</span>, <span>{{i.state}}</span></h4>
+          <p>{{i.issueType}}</p>
+          <p>Reports: {{i.num_reports}}</p>
         </div>
-        <h4>Issue #</h4>
-        <p>Issue type</p>
-        <p>Reports:</p>
+        <div class="col-sm-2">
+          <a href="/echopy/rir?street_num={{i.street_num}}&street_name={{i.street_name}}&city={{i.city}}&state={{i.state}}&issueType={{i.issueType}}"><span class="btn btn-warning">Remove</span></a>
+        </div>
       </div>
       <div class="col-sm-2">
       </div>
@@ -30,19 +35,7 @@
       <div class="h20">
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-2">
-      </div>
-      <div class="col-sm-8 issue">
-        <div class="glyphicon glyphicon-remove-sign float-right">
-        </div>
-        <h4>Issue #</h4>
-        <p>Issue type</p>
-        <p>Reports:</p>
-      </div>
-      <div class="col-sm-2">
-      </div>
-    </div>
+  {% endfor %}
   </div>
 </body>
 </html>
