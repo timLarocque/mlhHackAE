@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/issue_type_spinner_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/issue_type"/>
+
+    <Spinner
+        android:id="@+id/issue_type_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="32dp">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:text="@string/location"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:hint="@string/address"/>
+
+    <LinearLayout
+        android:id="@+id/city_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:hint="@string/city_text"/>
+
+        <EditText
+            android:id="@+id/state"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/state_text"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/email_text"/>
+
+    <EditText
+        android:id="@+id/email_hint"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/email_hint"/>
+</LinearLayout>
