@@ -1,5 +1,4 @@
 # City Echo
------
 
 By:
   - Adam Gaudreau
